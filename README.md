@@ -88,7 +88,7 @@ File naming: `sim_r{readiness}_w{wait}_mu{mu}_s{sigma}_i{impact}_p{power}_{scale
 
 Below are example simulation results with default parameters (N=1000):
 
-### Time Distribution (Log Scale)
+### Time Distribution
 
 ![Time Distribution](./media/sim_r0.8_w20_mu0.9_s0.5_i0.05_p1_linear.png)
 
@@ -99,7 +99,7 @@ The histogram shows right-skewed distribution of AI coding times
 - Peak around 100-150 minutes matches median time
 - Log scale reveals the exponential nature of delays in retry (if it can't complete within few retries, you better step in and do some coding)
 
-### Cumulative Distribution (Log Scale)
+### Cumulative Distribution
 
 ![Cumulative Distribution](./media/sim_cumulative_r0.8_w20_mu0.9_s0.5_i0.05_p1_linear.png)
 
