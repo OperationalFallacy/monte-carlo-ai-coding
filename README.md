@@ -4,7 +4,7 @@ The script simulates expected time for AI coding agent to generate code. It visu
 
 This project itself took about 8 hours. ChatGPT (paid plus subscription) designed formula for simulation, and Cursor (paid 20$) subscription wrote code.
 
-As you can see, the simulation well confirms results obtained in the experiment itself. It took 8 hours to create 400 LOC you see in sim.ts script. 
+As you can see, the simulation well confirms results obtained in the experiment itself. It took 8 hours to create 400 LOC you see in sim.ts script.
 
 The simulation shows expected time for 100 LOC is 132 min (2 hours), see plots below.
 
@@ -24,10 +24,10 @@ Mean (W) AI task generation time. Base time AI takes per attempt.
 0.05
 Multiplicative retry delay (α). Increases slowdown per retry.
 
-1 
+1
 Retry scaling exponent (p). Controls how retry impact grows.
 
-100 
+100
 Task size (LOC). Number of lines AI is generating.
 
 0.8 with 0.05 Std
@@ -38,8 +38,8 @@ $$
 T_{\text{AI}} = W \cdot N \cdot (1 + \alpha N^p) \cdot \frac{\text{LOC}}{R \cdot 60}
 $$
 
- **Where:**
 **Where:**
+
 - $W$ : Wait Time Mean — Base AI response time per attempt (normally distributed)
 - $N$ : Retry Count — Log-normally distributed number of retries before success
 - $\alpha$ : Retry Impact — Per-retry delay multiplier
@@ -61,6 +61,7 @@ yarn install
 ## Usage
 
 Run simulation with default parameters:
+
 ```bash
 yarn ts-node sim.ts
 ```
@@ -77,6 +78,7 @@ yarn ts-node sim.ts
 ### Output
 
 Generates 2 plots:
+
 - Distribution histogram (log scale)
 - Cumulative distribution (log scale)
 
@@ -87,18 +89,22 @@ File naming: `sim_r{readiness}_w{wait}_mu{mu}_s{sigma}_i{impact}_p{power}_{scale
 Below are example simulation results with default parameters (N=1000):
 
 ### Time Distribution (Log Scale)
+
 ![Time Distribution](./media/sim_r0.8_w20_mu0.9_s0.5_i0.05_p1_linear.png)
 
 The histogram shows right-skewed distribution of AI coding times
+
 - It completes generation within 50-200 minutes
 - Long tail extends to ~800 minutes (AI gets "stuck")
 - Peak around 100-150 minutes matches median time
 - Log scale reveals the exponential nature of delays in retry (if it can't complete within few retries, you better step in and do some coding)
 
 ### Cumulative Distribution (Log Scale)
+
 ![Cumulative Distribution](./media/sim_cumulative_r0.8_w20_mu0.9_s0.5_i0.05_p1_linear.png)
 
 The S-curve shows cumulative probability of generating 100 LOC:
+
 - 50% chance it completes under 116 minutes (median)
 - 90% chance it complete under 240 minutes
 - 95% chance it completes under 300 minutes
