@@ -1,0 +1,23 @@
+{
+  "name": "ai-coding-simulation",
+  "version": "1.0.0",
+  "description": "AI coding time simulation with statistical visualization",
+  "main": "sim.ts",
+  "scripts": {
+    "start": "yarn ts-node sim.ts"
+  },
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "simple-statistics": "^7.8.3",
+    "vega": "^5.33.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "packageManager": "yarn@4.1.0",
+  "engines": {
+    "node": ">=16"
+  }
+}
